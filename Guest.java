@@ -1,16 +1,22 @@
 import java.util.*;
 
 public class Guest extends User implements GuestInterface {
-	
+	private ArrayList<Room> room_list_for_guest = new ArrayList<>();
+
+	public ArrayList<Room> getRoom_list_for_guest() {
+		return room_list_for_guest;
+	}
+
+	public void setRoom_list_for_guest(ArrayList<Room> room_list_for_guest) {
+		this.room_list_for_guest = room_list_for_guest;
+	}
+
 	// default constructor
 	public Guest() {
 		super();
 	}
 	
-	/**
-	 * @param firstName
-	 * @param lastName
-	 */
+
 	// constructor that takes parameters
 	public Guest(String firstName, String lastName) {
 		super(firstName, lastName);

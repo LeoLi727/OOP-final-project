@@ -1,0 +1,2 @@
+type,roomNumber,capacity,curGuestNum,guests_of_a_room,price
+double room,713,2,0,NULL,217.76

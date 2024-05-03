@@ -3,10 +3,7 @@ import java.util.*;
 
 // parent class for the guest and manager classes
 public abstract class User {
-	private String username;
-	private String password;
-	private String firstName;
-	private String lastName;
+	protected String username, password, firstName, lastName;
 	
 	// default constructor
 	public User() {

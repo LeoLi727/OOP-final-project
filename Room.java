@@ -1,135 +1,100 @@
-import java.io.*;
 import java.util.*;
 
-public class Room implements Comparable<Room>{
+public class Room {
 	
 	// Attributes of Room object
 	private String type;
-	private String id;
-	private final int capacity = 1;
+	private String roomNumber;
+	private int capacity;
 	private int curGuestNum;
-	private ArrayList<Guest> guests = new ArrayList<>();
+	private final ArrayList<Guest> guests_of_a_room = new ArrayList<>();
 	private double price;
-	
+	private boolean booked = false;
+
+
+
 	// default constructor
 	public Room() {
-		
+		this.type = "xxx";
+		this.roomNumber = "xxx";
+		this.capacity = -1;
+		this.curGuestNum = 0;
+		this.price = 0;
 	}
-	
+
 	// constructor with parameters
-	public Room(String type, String id, int curGuestNum, double price) {
+	public Room(String type, String roomNumber, int capacity, double price) {
 		this.type = type;
-		this.id = id;
-		this.curGuestNum = curGuestNum;
+		this.roomNumber = roomNumber;
+		this.capacity = capacity;
+		this.curGuestNum = 0;
 		this.price = price;
 	}
 
-	/**
-	 * @return the type
-	 */
 	public String getType() {
 		return type;
 	}
 
-	/**
-	 * @param type the type to set
-	 */
 	public void setType(String type) {
 		this.type = type;
 	}
 
-	/**
-	 * @return the id
-	 */
-	public String getId() {
-		return id;
+	public String getRoomNumber() {
+		return roomNumber;
 	}
 
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(String id) {
-		this.id = id;
+	public void setRoomNumber(String roomNumber) {
+		this.roomNumber = roomNumber;
 	}
 
-	/**
-	 * @return the capacity
-	 */
 	public int getCapacity() {
 		return capacity;
 	}
 
-	/**
-	 * @return the curGuestNum
-	 */
+	public void setCapacity(int capacity) {
+		this.capacity = capacity;
+	}
+
 	public int getCurGuestNum() {
 		return curGuestNum;
 	}
 
-	/**
-	 * @param curGuestNum the curGuestNum to set
-	 */
 	public void setCurGuestNum(int curGuestNum) {
 		this.curGuestNum = curGuestNum;
 	}
 
-	/**
-	 * @return the names
-	 */
-	public ArrayList<Guest> getNames() {
-		return guests;
+	public ArrayList<Guest> getGuests_of_a_room() {
+		return guests_of_a_room;
 	}
 
-	/**
-	 * @return the price
-	 */
 	public double getPrice() {
 		return price;
 	}
 
-	/**
-	 * @param price the price to set
-	 */
 	public void setPrice(double price) {
 		this.price = price;
 	}
-	
-	// if the current guest number is less than the room's capacity, we can add a guest to the room
-	public boolean add(Guest g) {
-		if(this.curGuestNum < this.capacity) {
-			guests.add(g);
-			curGuestNum++;
-			return true;
-		}else {
-			return false;
+
+	public boolean isBooked() {
+		return booked;
+	}
+
+	public void setBooked(boolean booked) {
+		this.booked = booked;
+	}
+
+	public void displayRoomDetails() {
+		System.out.println("Room Type: " + this.type);
+		System.out.println("Room Number: " + this.roomNumber);
+		System.out.println("Capacity: " + this.capacity);
+		System.out.println("Current Number of Guests: " + this.curGuestNum);
+		System.out.println("Price: " + this.price);
+		System.out.println("Guests in Room:");
+		for (Guest guest : guests_of_a_room) {
+			System.out.println("  - Guest Name: " + guest.getFirstName() + " " + guest.getLastName() );
 		}
 	}
-	
-	// delete a guest from a room
-	public boolean delete(Guest g) {
-		if(guests != null) {
-			return guests.remove(g);
-		}else {
-			return false;
-		}
-	}
-	
-	// check if a room is available
-	public boolean isAvailable() {
-	    return this.curGuestNum < this.capacity;
-	}
-	
-	@Override
-	public int compareTo(Room another) {
-		if(this.getCurGuestNum() == another.getCurGuestNum()) {
-			return 0;
-		}
-		// in descending order
-		return this.getCurGuestNum() < another.getCurGuestNum() ? 1 : -1;
-	}
-	
-	// return a room's type in string format
-	public String toString() {
-		return this.getType();
-	}
+
+
+
 }
