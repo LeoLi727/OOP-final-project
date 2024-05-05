@@ -18,6 +18,46 @@ We prepared accounts
 | Manager | manager  | manager001 |
 | Guest   | user     | user001    |
 
+### How to Run
+
+1. **Clone the repository:**
+
+   ```
+   git clone https://github.com/LeoLi727/OOP-final-project.git
+   ```
+
+2. **Navigate to the project directory:**
+
+   ```
+   cd OOP-final-project
+   ```
+
+3. **Compile the Java files:**
+
+   ```
+   javac -d bin *.java
+   ```
+
+4. **Move CSV and binary files to the `bin` directory:**
+
+   ```
+   mv HotelRoomFile.csv bin/
+   mv room_facade.bin bin/
+   ```
+
+5. **Change directory to `bin`:**
+
+   ```
+   cd bin
+   ```
+
+6. **Run the hotel management application:**
+
+   ```
+   java HotelManagementApplication
+   ```
+
+
 
 ## Use Case Diagram
 
