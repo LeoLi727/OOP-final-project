@@ -1,2 +1,22 @@
 type,roomNumber,capacity,curGuestNum,guests_of_a_room,price
 double room,713,2,0,NULL,217.76
+single room,101,1,0,NULL,150.50
+suite,501,4,0,NULL,350.00
+double room,714,2,0,NULL,220.00
+queen room,615,2,0,NULL,200.00
+king room,416,2,0,NULL,250.00
+twin room,317,2,0,NULL,180.00
+single room,218,1,0,NULL,160.00
+suite,800,5,0,NULL,400.00
+double room,919,2,0,NULL,215.00
+luxury suite,620,3,0,NULL,500.00
+double room,721,2,0,NULL,210.00
+single room,122,1,0,NULL,140.00
+double room,823,2,0,NULL,230.00
+suite,924,4,0,NULL,360.00
+king room,325,2,0,NULL,260.00
+queen room,426,2,0,NULL,190.00
+twin room,527,2,0,NULL,175.00
+luxury suite,628,3,0,NULL,520.00
+single room,729,1,0,NULL,155.00
+double room,830,2,0,NULL,225.00
