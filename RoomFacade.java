@@ -287,6 +287,83 @@ public class RoomFacade implements java.io.Serializable {
         }
     }
 
+    public void register_new_guest(RoomFacade roomFacade) {
+        Scanner input1 = new Scanner(System.in);
+        System.out.print("Enter the username of the guest: ");
+        String username = input1.nextLine();
+        if (find_index_by_username(username) != -2) {
+            System.out.println("Username existed.\n Stop Creating");
+        } else {
+            System.out.print("Enter the password of the guest: ");
+            String password = input1.nextLine();
+            System.out.print("Enter the first name of the guest: ");
+            String firstname = input1.nextLine();
+            System.out.print("Enter the last name of the guest: ");
+            String lastname = input1.nextLine();
+            Guest newGuest = new Guest(username, password, firstname, lastname, roomFacade);
+            guest_list.add(newGuest);
+        }
+    }
+
+    public void view_guest_by_room_number() {
+        Scanner input1 = new Scanner(System.in);
+        System.out.print("Enter room number: ");
+        String room_number = input1.nextLine();
+        int index = find_index_by_room_number(room_number);
+        if (index != -2) {
+            if (room_list.get(index).isBooked()) {
+                for (Guest i : room_list.get(index).getGuests_of_a_room()) {
+                    i.show_name();
+                }
+            } else {
+                System.out.println("This room have not been booked.");
+            }
+        } else System.out.println("Viewed unsuccessfully. no such room found");
+    }
+
+    public void show_specific_guest_rooms() {
+        Scanner input1 = new Scanner(System.in);
+        System.out.println("What is the first name? ");
+        String firstname = input1.nextLine();
+        System.out.println("What is the last name? ");
+        String lastname = input1.nextLine();
+        int index = find_index_by_first_and_last_name(firstname, lastname);
+        if (index != -2) {
+            if (!guest_list.get(index).getRoom_list_for_guest().isEmpty()) {
+                for (Room j : guest_list.get(index).getRoom_list_for_guest()) {
+                    j.displayRoomDetails();
+                }
+            } else System.out.println("This guest didn't book any room");
+
+        } else System.out.println("Displayed unsuccessfully. no such guest found");
+    }
+
+    public Guest find_guest(String username, String password) {
+        int index = find_index_by_usernmae_and_password(username, password);
+        if (index != -2) {
+            return guest_list.get(index);
+        }
+        return null;
+    }
+
+    public void view_all_booked_room_for_a_guest(ArrayList<Room> list) {
+        if (!list.isEmpty()) {
+            for (Room i : list) {
+                i.displayRoomDetails();
+            }
+        } else System.out.println("No Rooms Booked");
+
+    }
+
+    public void show_all_guests() {
+        for (Guest g : guest_list) {
+            // display registered guest only
+            if (!g.getUsername().equals("xxx")) {
+                g.show_name();
+            }
+        }
+    }
+
 
 
 }
